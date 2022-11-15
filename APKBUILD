@@ -52,9 +52,11 @@ package() {
 	sudo make DESTDIR="$pkgdir" install
 	cd ../..
 	sudo chown -R build:abuild pkg
-	mv pkg/fwts/usr/local/lib pkg/fwts/usr/lib
 	mv pkg/fwts/usr/local/bin pkg/fwts/usr/bin
 	mv pkg/fwts/usr/local/share pkg/fwts/usr/share
+	mkdir pkg/fwts/usr/lib
+	cp -R pkg/fwts/usr/local/lib/fwts/* pkg/fwts/usr/lib/.
+	rm -R pkg/fwts/usr/local
 	:
 }
 
